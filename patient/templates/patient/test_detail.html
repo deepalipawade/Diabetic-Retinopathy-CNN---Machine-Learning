@@ -1,0 +1,30 @@
+{% extends "patient/base.html" %}
+{% block content %}
+<article class="media content-section">
+  <img class="rounded-circle article-img" src="{{ test.p_user.profile.image.url }}">
+  <div class="media-body">
+    <div class="article-metadata">
+      <h1>test type</h1>
+      <h2 class="mr-2">{{ object.test_type }}</h2>
+      <h1>date</h1>
+      <small class="text-muted">{{ object.date_tested|date:"F d, Y" }}</small>
+      <h1>img</h1>
+      <img class="rounded-circle article-img" src="{{ object.eye_image.url }}">
+    </div>
+    {% if object.p_user == user %}
+      <div>
+        <button name="button" onclick="location.href={% url 'patient-output'%}">Predict</button><br>
+        <!-- <p>{{ results }}</p> -->
+        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'test-update' object.id %}">Update</a>
+        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'test-delete' object.id %}">Delete</a>
+        <a class="btn btn-info btn-sm mt-1 mb-1" href="{% url 'patient-home' %}">Cancel</a>
+      </div>
+    {% endif %}
+    <h2><a class="article-title" href="#">{{ object.description }}</a></h2>
+    <p class="article-content">@{{ object.p_user.username }}</p>
+  </div>
+    </article>
+{% endblock content %}
+
+
+# add here code

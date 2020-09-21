@@ -1,0 +1,19 @@
+{% extends "patient/base.html" %}
+{% block content %}
+  <!-- Code for showing pre -->
+{% endblock content %}
+<br><br><br>
+<h2>Eye Image Preprocessing Prediction</h2>
+<br>
+<h3>DR Binary Test </h3>
+<form method="post" enctype="multipart/form-data" action="showPreprocessImages">
+{% csrf_token %}
+<input name="filePath" type="file"><br><br>
+<input type="submit" value="Show Preprocess Images" >
+</form>
+
+ <h4>The classification Result of the eye-image is :- </h4>
+ <h2>{{a}}</h2>
+ <br><br>
+
+<br>

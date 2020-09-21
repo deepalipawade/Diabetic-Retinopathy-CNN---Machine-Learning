@@ -1,0 +1,16 @@
+
+<html>
+{% for user in users %}
+<article class="media content-section">
+  <!-- <img class="rounded-circle article-img" src="{{ user.profile.image.url }}"> -->
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2">{{ user.email }}</a>
+      <small class="text-muted">{{ user.first_name }}</small>
+    </div>
+    <h2><a class="article-title" href="#">{{ user.last_name }}</a></h2>
+    <!-- <p class="article-content">@{{ user. }}</p> -->
+  </div>
+</article>
+    {% endfor %}
+    </html>

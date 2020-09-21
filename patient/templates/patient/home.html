@@ -1,0 +1,54 @@
+{% extends "patient/base.html" %}
+{% block content %}
+  {% if user.is_authenticated %}
+      <h2 style="color:#3388FF;">Diabetic Retinopathy Prediction</h2>
+    <br>
+    <h3>DR Binary Test </h3>
+    <form method="post" enctype="multipart/form-data" action="predictImage">
+    {% csrf_token %}
+    <div class="col-md-4 col-sm-4"><label for="fname">Upload Image File Here:</label> </div>
+    <input name="filePath" type="file"><br><br>
+    <input type="submit" value="Binary Test" >
+    </form>
+
+    <br><br>
+    <h3>DR Level Test </h3>
+    <form method="post" enctype="multipart/form-data" action="levelPredict">
+    {% csrf_token %}
+    <div class="col-md-4 col-sm-4"><label for="fname">Upload Image File Here:</label> </div>
+    <input name="filePath" type="file"><br><br>
+    <input type="submit" value="Level Test" >
+    </form>
+    <br><br>
+
+    <h4>The classification Result of the eye-image is :- </h4>
+    <h2>{{predictedLabel}}</h2>
+    <img src={{filePathName}} alt='imagename' style="width: 100px;">
+    <br><br>
+    <p>file path in system: {{filePathName}}
+    </p>
+    <br>
+  {% else %}
+    <h1 style="color:#3388FF;"> Welcome To Our Website</h1>
+    <br>
+    <p style="color:#FF5833;">Diabetic retinopathy is caused by damage to the blood vessels in the tissue at the back of the eye (retina). Poorly controlled blood sugar is a risk factor.
+Early symptoms include floaters, blurriness, dark areas of vision and difficulty perceiving colours. Blindness can occur.
+Mild cases may be treated with careful diabetes management. Advanced cases may require laser treatment or surgery.</p>
+
+<img src='/media/eye.jfif' alt='imagename' style="width: 500px; border-radius: 50%;">
+
+  {% endif %}
+{% endblock content %}
+<!-- {% for test in tests %}
+    <article class="media content-section">
+      <img class="rounded-circle article-img" src="{{ test.p_user.profile.image.url }}">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="{% url 'test-detail' test.id %}">{{ test.test_type }}</a>
+          <small class="text-muted">{{ test.date_tested|date:"F d, Y" }}</small>
+        </div>
+        <h2><a class="article-title" href="#">{{ test.description }}</a></h2>
+        <p class="article-content">@{{ test.p_user.username }}</p>
+      </div>
+    </article>
+{% endfor %} -->

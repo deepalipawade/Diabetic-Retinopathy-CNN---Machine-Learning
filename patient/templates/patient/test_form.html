@@ -1,0 +1,25 @@
+{% extends "patient/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="POST">
+          <!-- Instead of crispy forms use forms with action as given here : https://youtu.be/mgX-2_ybqNk
+        Add name to html elements in form
+      so in the request depending on test type call the model - binary ir levewise
+    no need of OK button after submit save image + next page(eyeimg + result)-->
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Test Details</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div style="margin: 20px;">
+              <button class="btn btn-outline-info" onclick="location.href={% url 'patient-output'%}" >Test</button>
+              <!-- <<input type="TextField" name="rsult" value=""> -->
+            </div>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Submit</button>
+                <a class='btn btn-info' href="{% url 'patient-home' %}">Cancel</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
