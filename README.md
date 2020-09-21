@@ -23,7 +23,9 @@ Authorization System :
 
 
 Steps to execute 
-1. Start Django Server 
-  python manage.py runserver
-2. Go to localhost:8000
-3. for Admin -> localhost:8000/admin
+1. git clone https://github.com/deepalipawade/Diabetic-Retinopathy-CNN-Machine-Learning.git
+2. cd Diabetic-Retinopathy-CNN-Machine-Learning
+3. Start Django Server 
+command : python manage.py runserver
+4. Go to localhost:8000
+for Admin -> localhost:8000/admin
